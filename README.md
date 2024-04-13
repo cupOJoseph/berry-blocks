@@ -22,9 +22,13 @@ Berry Block traits are deterministically created and unique to each combination 
 
 For security, the Berry Block NFT contract must be given an allowance on each berry token to use them.
 
+619,100 berries / 40 berries per Berry Block = maximum 15,477 NFTs with 4^4 = 256 different combinations of traits.
+
+
 ### Deployment
 Deployed and verified on Arbitrum here: 
 
 ### Technical Features
-1. An admin can set an external URI contract which has unique URIs for each NFT. This can be updated at any time
-2. 
+1. An admin can set an external URI contract which has unique URIs for each NFT. This can be updated at any time for now. This can also be removed with the same `setExternalURI` function.
+2. New berry types can be added using the `adminUpdateNewBerryType` function using the public address of the berry token.
+3. Berry types can't be removed.

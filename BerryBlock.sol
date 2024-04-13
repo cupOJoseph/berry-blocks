@@ -38,7 +38,7 @@ pragma solidity ^0.8.20;
 ⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⡿⠟⠉⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⠿⠛⠁⠀⠀⢀⣴⣿⣿⣿⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀⠀⠈⠛⢦⣄⡀⢀⡼⠃⠀⠀
 **/
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
@@ -49,14 +49,14 @@ interface IExternalURIContract {
 }
 
 contract BerryBlocks is Ownable, ERC721, ERC721URIStorage{
-    
-    struct Berry{
-        address tokenAddress;
-        string name;
-        string uri;
-    }
 
-    Berry[] public berries;
+    mapping(address => bool) allowedBerry;
+
+    mapping(uint => uint) public cubeKeys;
+
+    mapping(address => string) public berries;
+
+    uint public counter = 1;
 
     bool useExternalURI = false;
     address externalURIcontractAddress;
@@ -67,20 +67,58 @@ contract BerryBlocks is Ownable, ERC721, ERC721URIStorage{
     ERC721("Berry Blocks", "BB")
     {
         //setup berries
-        berries.push(Berry(oran, "Oran", ""));
-        berries.push(Berry(chesto, "Chesto", ""));
-        berries.push(Berry(pecha, "Pecha", ""));
-        berries.push(Berry(persim, "Persim", ""));
+        berries[oran] = "Oran";
+        berries[chesto] = "Chesto";
+        berries[pecha] = "Pecha";
+        berries[persim] = "Persim";
+
+        allowedBerry[oran] = true;
+        allowedBerry[chesto] = true;
+        allowedBerry[pecha] = true;
+        allowedBerry[persim] = true;
     }
 
     function adminUpdateNewBerryType(address tokenAddress, string calldata _name, string calldata _uri) external onlyOwner{
-        berries.push(Berry(tokenAddress, _name, _uri));
+        berries[tokenAddress] = _name;
+        allowedBerry[tokenAddress] = true;
     }   
 
-    function mintBlock(address berry1, address berry2, address berry3, address berry4) external{
+    function grind(address berry1a, address berry2a, address berry3a, address berry4a) external{
         //Burn 10 of each kind of berry 
         //hash the types
         //mint a new Berry Block
+
+        require(allowedBerry[berry1a]);
+        require(allowedBerry[berry2a]);
+        require(allowedBerry[berry3a]);
+        require(allowedBerry[berry4a]);
+
+        //burn
+        ERC20Burnable berry1 = ERC20Burnable(berry1a);
+        berry1.burnFrom(msg.sender, 10*10**18);
+
+        ERC20Burnable berry2 = ERC20Burnable(berry2a);
+        berry2.burnFrom(msg.sender, 10*10**18);
+
+        ERC20Burnable berry3 = ERC20Burnable(berry3a);
+        berry3.burnFrom(msg.sender, 10*10**18);
+
+        ERC20Burnable berry4 = ERC20Burnable(berry4a);
+        berry4.burnFrom(msg.sender, 10*10**18);
+
+        //hash
+        cubeKeys[counter] = uint(keccak256(abi.encodePacked(berry1a, berry2a, berry3a, berry4a)));
+
+        //mint
+        _safeMint(msg.sender, counter);
+        string memory uri = string.concat(
+            "{", 
+            berries[berry1a],
+            "}"
+        );
+
+        _setTokenURI(counter, uri);
+        counter++;
     }
 
     function _baseURI() internal pure override returns (string memory) {
@@ -118,6 +156,6 @@ contract BerryBlocks is Ownable, ERC721, ERC721URIStorage{
     }
 
     function testMint() public onlyOwner{
-
+        //remove before deploy.
     }
 }
