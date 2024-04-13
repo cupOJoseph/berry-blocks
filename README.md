@@ -5,7 +5,7 @@ Berries that can be turned into blocks, inspired by Pokemon, and build for Pokem
 Berries are ERC-20 tokens on Arbitrum. Every pokemon ENS name holder included in the snapshot received 151 (for the 151 original pokemon) berries of each type at initial deployment
 
 Deployments:
-- [Oren: https://arbiscan.io/token/0xa2e32c1e380acce23e120b0f76828ee4c9f0018e](https://arbiscan.io/token/0xa2e32c1e380acce23e120b0f76828ee4c9f0018e)
+- [Oran: https://arbiscan.io/token/0xa2e32c1e380acce23e120b0f76828ee4c9f0018e](https://arbiscan.io/token/0xa2e32c1e380acce23e120b0f76828ee4c9f0018e)
 - Chesto
 - Persim
 - Pecha
