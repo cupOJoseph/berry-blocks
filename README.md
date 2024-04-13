@@ -6,9 +6,9 @@ Berries are ERC-20 tokens on Arbitrum. Every pokemon ENS name holder included in
 
 Deployments:
 - [Oran: https://arbiscan.io/token/0xa2e32c1e380acce23e120b0f76828ee4c9f0018e](https://arbiscan.io/token/0xa2e32c1e380acce23e120b0f76828ee4c9f0018e)
-- Chesto
-- Persim
-- Pecha
+- [Chesto: https://arbiscan.io/address/0x6Bf4a50E6aB5B2e3437Eb96763D46168B83cD402](https://arbiscan.io/address/0x6Bf4a50E6aB5B2e3437Eb96763D46168B83cD402)
+- [Persim: https://arbiscan.io/address/0xB026541228F202aAF45AD37fB288c07891e75c66](https://arbiscan.io/address/0xB026541228F202aAF45AD37fB288c07891e75c66)
+- [Pinap: https://arbiscan.io/address/0x11C47Deb19f1e50B840E7F95De26930D81649782](https://arbiscan.io/address/0x11C47Deb19f1e50B840E7F95De26930D81649782)
 
 New berries can be created at any time.
 
