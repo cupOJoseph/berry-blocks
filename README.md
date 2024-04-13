@@ -14,6 +14,8 @@ New berries can be created at any time.
 
 There are 1025 Pokemon ENS names, and each received 151 of the 4 initial types of berries. Meaning the total initial berry supply is capped at: 1025 x 151 x 4 = 619,100 Berries
 
+About 15 Pokemon ENS names are unowned because of experiations. The berries for these have been split instead of being sent to the 0x0000... address. 50% have been added to a pool on Camelot. 50% have been added as incentives for that pool through the next 3 months, starting April 13th, 2024.
+
 ## Berry Block NFTs
 
 Each Berry Block is a unique 1 of a kind NFT. Berry Blocks are created by grinding 10 x 4 kinds of berries together through calling the `grind` function. The same kinds of berries can be used, but 4 groups of 10 tokens must be supplied. Berries used in this way are burned.
