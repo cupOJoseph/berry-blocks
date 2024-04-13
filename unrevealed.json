@@ -1,7 +1,34 @@
 {
-    "description": "Blocks of ground up berries. Berry Blocks may attract creatures", 
-    "external_url": "https://openseacreatures.io/3", 
-    "image": "https://storage.googleapis.com/opensea-prod.appspot.com/puffs/3.png", 
-    "name": "Dave Starbelly",
-    "attributes": [ ... ]
+    "description": "Blocks of ground up berries. Berry Blocks may attract creatures!", 
+    "external_url": "https://twitter.com/PokemonENS", 
+    "image": "ipfs://", 
+    "name": "Berry Block #",
+    "attributes": [
+        {
+            "trait_type": "Berry One", 
+            "value": "x"
+        },
+        {
+            "trait_type": "Berry Two", 
+            "value": "y"
+        },
+        {
+            "trait_type": "Berry Three", 
+            "value": "z"
+        },
+        {
+            "trait_type": "Berry Four", 
+            "value": "abc"
+        },
+        {   
+            "display_type": "number", 
+            "trait_type": "Berry Trait Key", 
+            "value": 123
+        },
+        {
+            "trait_type": "Revealed", 
+            "value": "False"
+        }
+        
+    ]
   }

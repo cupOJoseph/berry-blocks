@@ -78,7 +78,7 @@ contract BerryBlocks is Ownable, ERC721, ERC721URIStorage{
         allowedBerry[persim] = true;
     }
 
-    function adminUpdateNewBerryType(address tokenAddress, string calldata _name, string calldata _uri) external onlyOwner{
+    function adminUpdateNewBerryType(address tokenAddress, string calldata _name) external onlyOwner{
         berries[tokenAddress] = _name;
         allowedBerry[tokenAddress] = true;
     }   
@@ -112,9 +112,15 @@ contract BerryBlocks is Ownable, ERC721, ERC721URIStorage{
         //mint
         _safeMint(msg.sender, counter);
         string memory uri = string.concat(
-            "{", 
+           '{"description": "Blocks of mashed up berries. Berry Blocks may attract creatures!", "external_url": "https://twitter.com/PokemonENS", "image": "ipfs://Qmb5vAgP1yBBGsziqtFFUp5yAbgeofrMsPNt3gyTXLbAq8","name": "Berry Block","attributes":[{"trait_type": "Berry One","value": "',
             berries[berry1a],
-            "}"
+            '"},{"trait_type": "Berry Two","value": "',
+            berries[berry2a],
+            '"},{ "trait_type": "Berry Three","value": "',
+            berries[berry3a],
+            '"},{"trait_type": "Berry Four", "value": "',
+            berries[berry4a],
+            '"},{"trait_type": "Revealed","value": "False"}]}'
         );
 
         _setTokenURI(counter, uri);
@@ -122,7 +128,7 @@ contract BerryBlocks is Ownable, ERC721, ERC721URIStorage{
     }
 
     function _baseURI() internal pure override returns (string memory) {
-        return "hi";
+        return "";
     }
 
     function setExternalURI(address newURIPath, bool use) external onlyOwner{
@@ -142,7 +148,7 @@ contract BerryBlocks is Ownable, ERC721, ERC721URIStorage{
         if(useExternalURI){
             return externalURIcontract.tokenURI(tokenId);
         }else{
-            return  super.tokenURI(tokenId);
+            return super.tokenURI(tokenId);
         }
     }
 
@@ -153,9 +159,5 @@ contract BerryBlocks is Ownable, ERC721, ERC721URIStorage{
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
-    }
-
-    function testMint() public onlyOwner{
-        //remove before deploy.
     }
 }
