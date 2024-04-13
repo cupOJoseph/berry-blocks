@@ -2,7 +2,7 @@
 Berries that can be turned into blocks, inspired by Pokemon, and build for Pokemon ENS community
 
 ## Berries
-Berries are ERC-20 tokens on Arbitrum. Every pokemon ENS name holder included in the snapshot received 151 (for the 151 original pokemon) berries of each type at initial deployment
+Berries are ERC-20 tokens on Arbitrum. Every pokemon ENS name holder included in the snapshot received 151 (for the 151 original pokemon) berries of each type at initial deployment. Berry Blocks can be used to attract pokemon.
 
 Deployments:
 - [Oran: https://arbiscan.io/token/0xa2e32c1e380acce23e120b0f76828ee4c9f0018e](https://arbiscan.io/token/0xa2e32c1e380acce23e120b0f76828ee4c9f0018e)
